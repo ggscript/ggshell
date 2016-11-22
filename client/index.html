@@ -37,10 +37,10 @@
         handleError();
         if(location.hostname === 'localhost') {
           proxyDomain = 'http://localhost:3000';
-          console.log('HOSTNAME: ',proxyDomain);
+          console.log('HOSTNAME GGSHELL: ',proxyDomain);
         } else {
           proxyDomain = 'https://ggscript.herokuapp.com';
-          console.log('HOSTNAME: ', proxyDomain);
+          console.log('HOSTNAME GGSHELL: ', proxyDomain);
         }
         windowProxy = new Porthole.WindowProxy(proxyDomain);
         windowProxy.addEventListener(onMessage);
@@ -55,6 +55,7 @@
 
       function handleError() {
         window.onerror = (messageOrEvent, source, lineno, colno, error) => {
+          sessionStorage.script = undefined;
           var error_msg = messageOrEvent;
           var error_line = lineno;
           var error_col = colno;
