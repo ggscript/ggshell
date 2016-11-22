@@ -48,6 +48,7 @@
           console.log('SESSION STORAGE: ', sessionStorage);
           if(sessionStorage.script){
             eval(sessionStorage.script);
+            sessionStorage.script = undefined;
           }
         }
       }
