@@ -48,14 +48,14 @@
           console.log('SESSION STORAGE: ', sessionStorage);
           if(sessionStorage.script){
             eval(sessionStorage.script);
-            sessionStorage.script = undefined;
+            sessionStorage.script = null;
           }
         }
       }
 
       function handleError() {
         window.onerror = (messageOrEvent, source, lineno, colno, error) => {
-          sessionStorage.script = undefined;
+          sessionStorage.script = null;
           var error_msg = messageOrEvent;
           var error_line = lineno;
           var error_col = colno;
