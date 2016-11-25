@@ -9,9 +9,13 @@
 <body>
   <div id="gamebox">
   <div id="errorconsole">
-    <div style="text-align: center; color: white; font-size: 1.5em;"> <br></br>
+    <div style="text-align: center; color: white; font-size: 1.5em;" id="learn"> <br></br>
       Your game will display here once you have solved all prompts correctly.  We've provided error messages below to help you. These messages along with the learning objectives, prompts, and hints, will help you get your game working in no time.  Good Luck!  <br></br>
-    </div><br></br>
+    </div>
+    <div style="text-align: center; color: white; font-size: 1.5em;" id="sandbox"> <br></br>
+      Welcome to the Sandbox.  You're on your own here, but we still provide you error messages below to help you get your game working.  Good luck!  <br></br>
+    </div>
+    <br></br>
     <div id="error-msg"></div>
     <div id="error-line"></div>
     <div id="error-col"></div>
@@ -21,6 +25,8 @@
         if(messageEvent.data.script) {
           if(sessionStorage){
             sessionStorage.script = messageEvent.data.script;
+            sessionStorage.learn = messageEvent.data.learn;
+            sessionStorage.sandbox = messageEvent.data.sandbox;
           }
           // refresh ggshell src code so global namespace is also refreshed
           location.reload();
@@ -62,6 +68,14 @@
             document.getElementsByTagName('canvas')[0].remove();
           }
           document.getElementById('errorconsole').style.display = 'inline-block';
+          if(sessionStorage.learn === 'true'){
+            console.log(sessionStorage.learn, 'storage learn')
+            document.getElementById('learn').style.display = 'inline-block';
+          }
+          if(sessionStorage.sandbox === 'true'){
+            console.log(sessionStorage.sandbox, 'storage sandbox')
+            document.getElementById('sandbox').style.display = 'inline-block';
+          }
           document.getElementById('error-msg').innerHTML = 'Error Message: ' +error_msg;
           document.getElementById('error-line').innerHTML = 'Line Number: ' + error_line;
           document.getElementById('error-col').innerHTML = 'Character Number (Column): ' +error_col;
