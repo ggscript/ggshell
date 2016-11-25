@@ -30,3 +30,11 @@ body {
   color: white;
   font-size: 1.3em;
 }
+
+#learn {
+  display: none;
+}
+
+#sandbox {
+  display: none;
+}
